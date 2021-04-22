@@ -20,8 +20,10 @@ function App() {
           Learn React
         </a>
       </header>
-      <Componente msg="hola soy un componente con arrow function"></Componente>
-      <Componente msg="hola"></Componente>
+      <section>
+        <Componente msg="hola soy un componente con arrow function"></Componente>
+        <Componente msg="hola"></Componente>
+      </section>
     </div>
   );
 }
