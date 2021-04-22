@@ -1,0 +1,97 @@
+para empesar a trabajr con REACT necesitamos tener una carpeta y con la consola en este caso guit bash ejecutamos
+el comando npx create-react-app my-app(nombre que va a tener la carpeta)
+SE NECESITA TENER INSTALADO NODEJS
+esto trabaja con webpack
+
+una ves creado se generara carpeta public y src. donde trabajaremos en nuestra app.(es de desarrollo no se sube a hosting)
+
+en la consola de comandos de visual studio code para trabajar con react podremos ejecutar 4 comandos:
+1-nom start: inicia el servidor de desarrollo y abre un navegador con la aplicacion.
+
+2-npm run test: ejecuta las pruebas osea levanta el entorno de pruebas unitarias y en ves de leer el archivo app.js
+estara leyendo el archivo App.test.js en la consola aparecera un menu para fijarnos las fallas,etc
+
+3-npm run build: va a generar el build de la aplicacion osea una carpeta que es la que se va a subir 
+a produccion una ves terminada la APP. tambien en la consola una ves creada esa carpeta no sugiere que pongamos
+npm install -g serve(para levantar la pag ya terminada se intala de manera global en el equipo para no tener que hacerlo simpre)
+serve -s build(levanta en un servidor local de la maquina la app terminada que esta en la carpeta BUILD) "INSTALAR LAS DOS"
+
+4-npm run eject:hay que tener cuidado porque como el nombre lo indica va a ejectar a create react app y esto 
+significa que va a ejectar toda la configuracion que ya previamente te esta dando create react app como las 
+dependencias del package.json se crea una carpeta config y otra script y dentrod e esas no muestra todo lo que
+hace create react app muestra la config de webpack
+
+
+
+---------------------------------------------SINTAXIS JXS A HTML-----------------------------------------------
+Es una extencion de la sintaxis de JAVASCRIPT que produce elementos de react. se puede usar:
+1-Dentro de estructuras de control con if y for.
+2-asignarlo a variables.
+3-aceptarlo como argumento o retorno en funciones.
+4-Expresiones JavaScript ej <img src={logo className="App-logo"} alt="logo"/>
+
+Atencion su sintaxis se parece a HTML pero no es HTML algunas diferencias.
+1-todas las etiquetas deben cerrarse ej <br> <br/>
+2-atributos html cambian como:
+	class por className.
+	for del label por htmlFor
+------------------------------------JSX SE TRANSFORMA EN JAVASCRIPT--------------------------------------------
+por ej: <div className="active" id="active">hola mundo</div>
+
+se tranforma a: React.createElement("div",{className:"active",id="active"},"hola mundo")
+ entre comillas la etiqueta, dentro de las llaves van las propiedades de la etiqueta div en forma de objeto y
+ finaliza con el contenido	
+
+no permite crear dos etiqeutas padre solo permite uno y para solucionarlo encerramos esas etiquetas en <><>ej:
+<>
+  <div className="container">
+  	<div 
+    	  className="hola" 
+    	  id="sa"
+  	>
+    	  hola
+  	</div>
+  </div>
+  <article></article>
+</>
+se tranforma en:
+React.createElement(
+  React.Fragment,
+  null,
+  React.createElement(
+    "div",
+    {
+      className: "container"
+    },
+    React.createElement(
+      "div",
+      {
+        className: "hola",
+        id: "sa"
+      },
+      "hola"
+    )
+  ),
+  React.createElement("article", null)
+);
+
+--------------------------OPERACIONES DENTRO DE LAS ETIQUEAS-----------------------------------------
+podemos realizar operaciones aritmeticas dentro de las etiquetas en JSX o operadores ternarios o bucles
+let nombre='maxi';esto iria afuera comop variable global
+let autenticadoUsuario=false;
+        {/*podemos crear variable e interpolarlas en etiquetas dentro de llaves*/}
+        <p>{nombre}</p> "mostrara el nombre maxi"
+
+        {/*podemos crear ternarios o if else*/}
+        <p>
+          {autenticadoUsuario?'logueado':'no esta logueado'} mostrara "no esta logueado"
+        </p>
+
+        {/*podemos realizar operaciones aritmeticas*/}
+        <p>resultado={1+2}</p> "mostrara el resultado 3"
+
+
+NOTA:
+instalamos una extencion de chrome para poder trabajar con react y en la pestaña de desarrollador se agregara
+component y profiler https la extencion esta en:
+//chrome.google.com/webstore/detail/react-developer-tools/fmkadmapgofadopljbjfkapdkoienihi?hl=es
