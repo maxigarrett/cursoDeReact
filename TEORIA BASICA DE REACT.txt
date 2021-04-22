@@ -91,6 +91,25 @@ let autenticadoUsuario=false;
         <p>resultado={1+2}</p> "mostrara el resultado 3"
 
 
+-------------------------------COMPONENTES----------------------------------------------
+el concepto de componentes permite separar el codigo y los elementos de la interfaz en pequenias piezas 
+independientes y reutilizables que estaran ailadas una de otras.En react los datos fluyen de forma unidireccional
+, de componentes padres a componenetes hijos.
+Reac nos permite definir componenetes como clases(se usa pero no tanto) o como funciones. 
+
+compoenentes de clases:
+  import React,{Component} from "react";
+  class Title extends Component{
+    //para que funicone con clases tenemos que llamar a render
+    render(){
+      return <h2>hola mundo</h2>;
+    }
+  }
+Componeentes como funcion:
+  const Title=()=>{
+    return <h2>hola mundo</h2>;
+  }
+
 NOTA:
 instalamos una extencion de chrome para poder trabajar con react y en la pestaña de desarrollador se agregara
 component y profiler https la extencion esta en:
