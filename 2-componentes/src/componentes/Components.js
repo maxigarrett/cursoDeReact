@@ -1,6 +1,6 @@
 //import React,{Component} from "react"; //para cuando utilizamos clases
 
-//como funcion
+//como funcion esto seria el componente
 const Componente =(props)=>{
     return <h1>{props.msg}</h1>//se puede llamar varias veces con diferentes mensajes
 }
