@@ -1,4 +1,4 @@
-import React,{Component} from "react"; //para cuando utilizamos clases
+//import React,{Component} from "react"; //para cuando utilizamos clases
 
 //como funcion
 const Componente =(props)=>{

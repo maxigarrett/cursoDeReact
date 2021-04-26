@@ -110,6 +110,16 @@ Componeentes como funcion:
     return <h2>hola mundo</h2>;
   }
 
+------------------------------------PROPS O PROPIEDADES----------------------------------------------
+son valores que recibe un componente hijo de un  padre. Se agrupan en un objeto llamado PROPS, el cual,
+puede recibir diferentes tipos de datos. Las PROPS son inmutables osea de solo lectura, no se modifican
+el componente recibe las props como atributo.  como:
+string,Numbre,bollean,arrays,objects,functions,react elements,react component ej:
+
+
+
+
+
 NOTA:
 instalamos una extencion de chrome para poder trabajar con react y en la pestaña de desarrollador se agregara
 component y profiler https la extencion esta en:
