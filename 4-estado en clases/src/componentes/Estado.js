@@ -7,7 +7,20 @@ el estado tiene tres caracteristicas importantes:
     2-No se puede modificar directamente:
     3-es asincrono
     
-para hacer cambios hay que hacer uso del metodo setState()*/
+para hacer cambios hay que hacer uso del metodo setState()
+
+State VS Props
+Props- 
+1-Se declaran al intanciar el componente
+2-son atributo del componente,son inmutables
+3-una vez renderizado el componente sus props no se pueden alterar
+
+State-
+1-se declara dentro del componente es decir no se le instancia como las props 
+2-guarda la informacion del componente en un momento concreto 
+3-puede cambiar setState()
+4-el componente tiene el coontrol de su propio estado
+*/
 import React,{Component} from 'react';
 
 //se puede pasar estados de padres a hijos osea a este  componente y le pasaremos el contador ya que todavia
