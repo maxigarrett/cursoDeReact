@@ -19,6 +19,7 @@ export class EventoES6 extends Component{
     }
     suma(e){
         console.log('SUMAR');
+        console.log(e.target);
         //console.log(this)hace referencia al contexto donde se encuentra ose dentro de esta funcion pero al tener bind en el 
         // constructor hace referencia a las variables globales
         console.log(this)
