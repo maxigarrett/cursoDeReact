@@ -4,17 +4,17 @@ import React,{Component} from 'react';
 //despues llamaremos al compoenente y le pasaremos la prop que esa props en este caso tiene
 // una funcion saludar()
 // <Boton MyOnClick={(e)=> this.handleClick(e,'parametros desde componente en evento')}></Boton>
-/*const Boton =(props)=>{
+const Boton =(props)=>{
     return(
         <button onClick={props.MyOnClick}>Boton hecho con componente</button>
     );
-}*/
+}
 //otra forma es destructurando
-const Boton =({MyOnClick})=>{
+/*const Boton =({MyOnClick})=>{
     return(
         <button onClick={MyOnClick}>Boton hecho con componente</button>
     );
-}
+}*/
 export class EventosSinteticosYPersonalizados extends Component{
 
     handleClick=(e,msg)=>{
