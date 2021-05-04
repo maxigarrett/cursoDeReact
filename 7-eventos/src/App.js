@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import Evento from './component/Eventos'
+import {EventoES6,EventoES7} from './component/Eventos';
 
 function App() {
   return (
@@ -19,7 +19,9 @@ function App() {
           Learn React
         </a>
       </header>
-      <Evento></Evento>
+      <EventoES6></EventoES6>
+      <hr></hr>
+      <EventoES7></EventoES7>
     </div>
   );
 }
