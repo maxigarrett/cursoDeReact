@@ -34,7 +34,9 @@ class RenderizadoElementos extends Component{
                 <h3>Datos de JSON Framework</h3>
                 {/*trameos de un json simulando info de una API u BBDD y recorremos ese JSON dentro
                 de un <ul> luego llamamos a un componente que tiene los <li> y le pasamos las props
-                con los datos del json que recorremos*/}
+                con los datos del json que recorremos
+		cuando recorremos y llamamos un componente las llaves de la funcion no van sino no anda
+		osea despues de data.framework.map(el=> <componente>) va sin llaves no es como un recorrido en js*/}
                 <ul>
                     {data.framework.map(el=>
                         <Lista key={el.id} msgLink={el.web} msg={el.name}></Lista>)
