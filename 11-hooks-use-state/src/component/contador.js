@@ -27,14 +27,15 @@ export default function ContadorHooks()
     // 1 y lo almacenamos dentro de la funcion sumar y restar  
     const sumar=()=>setContador(contador +1)
     const restar=()=>setContador(contador -1)
-
+    
     // no necesitamos render como en las clases. return se tranforma en ese render
     return(
         <>
             <h2>Hooks - useState</h2>
             <button onClick={sumar}>+</button>
-            <button onClick={restar}>+</button>
+            <button onClick={restar}>-</button>
             <h3>{contador}</h3>
+            {contador===0?<p>ace clic</p>:<p>{`hiciste ${contador} clics`}</p>}
         </>
     )
 }
