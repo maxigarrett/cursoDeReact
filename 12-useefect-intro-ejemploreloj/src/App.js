@@ -1,6 +1,7 @@
 import logo from './logo.svg';
 import './App.css';
 import ScrollHooks from './components/ScrollHooks'
+import RelojHooks from './components/relojHooks'
 function App() {
   return (
     <div className="App">
@@ -19,6 +20,7 @@ function App() {
         </a>
       </header>
         <ScrollHooks></ScrollHooks>
+        <RelojHooks></RelojHooks>
     </div>
   );
 }

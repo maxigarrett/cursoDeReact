@@ -22,7 +22,7 @@ const ScrollHooks =()=>{
     // si no espesificamo el segundo parametro de useEffect practicamente lo que aya en este 
     // useEffect se va a estar renderizando cada vez que se vuelva a pintar el componente
     useEffect(()=>{
-        console.log('moviendo el scroll')
+        // console.log('moviendo el scroll')
 
         const detectarScroll=()=>{
             setScrollY(window.pageYOffset)
@@ -36,7 +36,7 @@ const ScrollHooks =()=>{
 
         //le desimos que cuando no exista el scroll desmonteje
         return()=>{
-            console.log('fase de desmontaje')
+            // console.log('fase de desmontaje')
             window.removeEventListener('scroll',detectarScroll)
         }
     })
@@ -44,7 +44,7 @@ const ScrollHooks =()=>{
     // ----------------------IMPORTANTE: FASE DE actualizacion-----------------------------
     //solo se ejecutara este useEffect si hay cambios en la variable scrollY
     useEffect(()=>{
-        console.log('componentDidUpdate(actualizacion)')
+        // console.log('componentDidUpdate(actualizacion)')
     },[scrollY])
 
     // ----------------------IMPORTANTE: FASE DE MONTAJE-----------------------------
@@ -53,7 +53,7 @@ const ScrollHooks =()=>{
     //si queremos que se ejecute una sola ves entonces dejamos vacio el array del 2do parametro
     //por consola se ejectura una sola ves.
     useEffect(()=>{
-        console.log('componentDidMount(montaje)')
+        // console.log('componentDidMount(montaje)')
     },[])
 
     useEffect(()=>{
