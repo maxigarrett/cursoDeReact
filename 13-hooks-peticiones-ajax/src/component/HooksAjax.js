@@ -64,6 +64,8 @@ const HooksAjax=()=>{
             //la p la toma com si estuvieramos llamando a la variable pokemons osea asi:
             // setPokemon([...pokemons,pokemon]) (pero de esta forma machaca el array y solo
             // muestra el ultimo array por eso destructuramos) 
+	    //es decir que la p almacena el array y es como si reccorrieramos el arraypokemons
+		//y al recorrelo agregammos el spreed operator y le unimos el obj pokemon
             setPokemon((p)=>[...p,pokemon])  
         })
     }
