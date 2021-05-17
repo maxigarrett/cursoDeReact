@@ -21,7 +21,7 @@ export const useFetch =(url)=>{
                 //throw es el return de los errores asique creamos un objeto para manipular ese error
                 //si algo salio mal entrara a este objeto y se lo pasara al catch por parametro gracias
                 // a que pusimos la palabra reservada throw
-                throw{
+               throw{
                     err:true,
                     status:res.status,
                     statusText:`ocusrrio un error ${res.statusText}`
