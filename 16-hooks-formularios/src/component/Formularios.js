@@ -60,7 +60,8 @@ export const Formularios=()=>{
 
                 {/* LISTA */}
                 <p>Lenguaje favorito</p>
-                <select name='lenguaje' onChange={(e)=>setLenguajes(e.target.value)}>
+                <select name='lenguaje' onChange={(e)=>setLenguajes(e.target.value)}
+                defaultValue=''>{/*por defecto igual que el titulo*/}
                     <optgroup>
                         <option value=''>-----lenguaje favorito-----</option>
                         <option value='js'>javaScript</option>
@@ -71,6 +72,7 @@ export const Formularios=()=>{
                     </optgroup>
                 </select>
             </form>
+            <p>{`${name}- ${taste}-${lenguajes}`}</p>
         </>
     )
 }
