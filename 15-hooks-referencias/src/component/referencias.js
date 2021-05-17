@@ -79,4 +79,3 @@ export const ReferenciasNav=()=>{
     )
 }
 
-export default ReferenciasNav
