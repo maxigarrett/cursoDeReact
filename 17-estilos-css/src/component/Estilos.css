@@ -1,0 +1,10 @@
+.section{
+    width: 90%;
+}
+.section h3{
+    padding: 2rem;
+}
+
+.bg-react{
+    background-color: #61dafb;
+}

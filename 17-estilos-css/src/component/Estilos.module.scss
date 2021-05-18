@@ -1,0 +1,9 @@
+$bg-color:#bf4080;
+$bg-color-80:#bf408080;//los ultimos dos num son la opacidad podria ser 90,80,10 seria el %
+.bgsass{
+    background-color:$bg-color;
+    transition: background-color .5s ease-in-out;
+    &:hover{
+        background-color:$bg-color-80;
+    }
+}
