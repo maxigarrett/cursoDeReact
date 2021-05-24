@@ -33,7 +33,11 @@ export const CrudApp=()=>{
    const [dataToEdit,setdataToEdit]= useState(null);//para saber si necesitamos crear o actulizar datos
 
    const CreateData=(data)=>{
-
+    // console.log(data,data.name,data.id)
+    //agregamos un id para cuando creamos un nuevo registro y si despues comprobamos va a tener un id y por lo tanto vamos
+    //a poder actualizar
+    data.id=Date.now();
+    setdb([...db,data])
    }
    const UpdateData=(data)=>{
 
