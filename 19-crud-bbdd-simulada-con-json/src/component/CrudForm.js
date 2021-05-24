@@ -37,6 +37,7 @@ export const CrudForm=({createData,updateData,dataToEdit,setDataToEdit})=>{
         }
 
         handleReset();
+        
     }
     const handleReset=()=>{
         //para limpiar los input no hay que olvidar que estan controlados por una variable de estado entonces llamamos a 
