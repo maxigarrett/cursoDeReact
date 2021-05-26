@@ -1,5 +1,6 @@
 import { React } from "react";
 import { CrudTableRow } from "./CrudTableRow";
+import './CrudTable.css'
 
 export const CrudTable=({data,setDataToEdit,deleteData})=>{
     return(
@@ -10,7 +11,7 @@ export const CrudTable=({data,setDataToEdit,deleteData})=>{
                     <tr>
                         <th>Name</th>
                         <th>Contellations</th>
-                        <th>Acciones</th>
+                        <th className='accionesth'>Acciones</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -20,7 +21,12 @@ export const CrudTable=({data,setDataToEdit,deleteData})=>{
                         </tr>
                         :
                         data.map((el)=>
-                            <CrudTableRow key={el.id} dataCaballeros={el}/>
+                            <CrudTableRow 
+                                key={el.id} 
+                                dataCaballeros={el} 
+                                setDataToEdit={setDataToEdit} 
+                                deleteData={deleteData}
+                            />
                         )
                     }
                     
