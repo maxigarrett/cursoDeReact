@@ -1,8 +1,8 @@
 export const HelpHttp=()=>{
     //fetch que realiza la peticion y manipulamos el objeto de opciones
-    const customFetch=(Url,options)=>{
+    const  customFetch=async (url,options)=>{
         const defaultHeader={
-            contentType:'application/json',
+            'content-type':'application/json',
         }
 
         const controller= new AbortController();
@@ -27,8 +27,7 @@ export const HelpHttp=()=>{
             controller.abort();
         },3000)
 
-        return fetch(Url,options)
-        .then(res=> 
+        return await fetch(url,options).then(res=> 
             res.ok
             ?res.json()
             :Promise.reject({            
@@ -40,22 +39,25 @@ export const HelpHttp=()=>{
 
     //si en el get no tiene opciones que es lo mas logico le pasamos un obj vacio que se llenara
     //en customFetch con las propiedades que le pasamos por defecto
-    const get=(url,options={})=>customFetch(url,options)
-    const post=(url,options={})=>{
+    const get=async (url,options={})=>await customFetch(url,options)
+   
+    const post=async(url,options={})=>{
         options.method='POST'
-        customFetch(url,options)
+        await customFetch(url,options)
     }
-    const put=(Url,options={})=>{
+    const put=async(url,options={})=>{
         options.method='PUT'
-        customFetch(url,options)
+        await customFetch(url,options)
     }
-    const delet=(Url,options={})=>{
+    const delet=async(url,options={})=>{
         options.method='DELETE'
-        customFetch(url,options)
+        await customFetch(url,options)
     }
+    
 
     //shortcut que existen desde msc6 que como el valor y la propiedad tienen el mismo nombre
     //se puede exportar de esta forma
+    //get:get seria de la manera antigua
     return{
         get,
         post,
