@@ -1,8 +1,11 @@
 export const HelpHttp=()=>{
     //fetch que realiza la peticion y manipulamos el objeto de opciones
-    const  customFetch=async (url,options)=>{
+    const  customFetch=async(url,options)=>{
         const defaultHeader={
-            'content-type':'application/json',
+            //le decimos que acepta este tipo de cabecera pero para que no cauce errro
+            //si el content-type acepta aplication/json se lo pasamos manualmente como 
+            //seegundo parametro de las opciones cuando utilicemos la funcion POST,PUT
+            accept:'application/json',
         }
 
         const controller= new AbortController();
@@ -15,7 +18,7 @@ export const HelpHttp=()=>{
         //sino le decimo que es GET. || 'GET'
         options.method=options.method || 'GET';
         
-        options.headers=options.header? {...defaultHeader,...options.header}:defaultHeader;
+        options.headers=options.headers? {...defaultHeader,...options.headers}:defaultHeader;
 
         options.body=JSON.stringify(options.body) || false;
         
@@ -39,19 +42,19 @@ export const HelpHttp=()=>{
 
     //si en el get no tiene opciones que es lo mas logico le pasamos un obj vacio que se llenara
     //en customFetch con las propiedades que le pasamos por defecto
-    const get=async (url,options={})=>await customFetch(url,options)
+    const get= async(url,options={})=> await customFetch(url,options)
    
     const post=async(url,options={})=>{
         options.method='POST'
-        await customFetch(url,options)
+       return await customFetch(url,options)
     }
-    const put=async(url,options={})=>{
+    const put=(url,options={})=>{
         options.method='PUT'
-        await customFetch(url,options)
+        customFetch(url,options)
     }
-    const delet=async(url,options={})=>{
+    const delet=(url,options={})=>{
         options.method='DELETE'
-        await customFetch(url,options)
+        customFetch(url,options)
     }
     
 

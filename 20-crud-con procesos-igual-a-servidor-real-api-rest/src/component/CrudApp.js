@@ -4,7 +4,7 @@ import { CrudForm } from './CrudForm';
 import { CrudTable } from './CrudTable';
 import { Loader } from './Loader';
 import { Message } from './Message';
-
+// json-server --watch db.json
 export const CrudApp=()=>{
    const [db,setdb]= useState(null);
    const [dataToEdit,setdataToEdit]= useState(null);//para saber si necesitamos crear o actulizar datos
@@ -29,17 +29,29 @@ export const CrudApp=()=>{
         setLoading(false)
     })
    },[url])
-   const CreateData=(data)=>{
-       let options={body:data}
-       post(url,options)
-       data.id=Date.now();
-    setdb([...db,data])
-
-   }
+    const CreateData=async(data)=>{
+        data.id=Date.now();
+       //podriamos ponerlo por defecto el el helper pero no todas las apis andan cuando le pasas
+       //esta cabezera
+       let options={
+            body:data,
+            headers:{'content-type':'application/json'}
+        }
+        await post(url,options).then((res)=>{
+           console.log(res)
+           if(!res.err){//si no hay una propiedad err que creamos en el helper pues todo va bien
+            setdb([...db,res])
+           }
+           else{
+               setError(res)
+           }
+       })
+    }
 
 
    const UpdateData=(data)=>{
         // console.log(data.id)
+        let rutUrl=`${url}/${data.id}`;
         let newData=db.map((el)=>el.id===data.id ? data : el)
         setdb(newData)
         console.log(newData)
