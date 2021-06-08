@@ -2,28 +2,28 @@
   "santos": [
     {
       "id": 1,
-      "name": "Seiya",
-      "contellation": "Pegaso"
+      "name": "Seia",
+      "constellation": "Pegasos"
     },
     {
       "id": 2,
-      "name": "Shiryu",
-      "contellation": "Dragon"
+      "name": "Shyru",
+      "constellation": "Dragon"
     },
     {
       "id": 3,
       "name": "Hyoga",
-      "contellation": "Cisne"
+      "constellation": "Cisne"
     },
     {
       "id": 4,
       "name": "Shun",
-      "contellation": "Andromeda"
+      "constellation": "Andromeda"
     },
     {
       "id": 5,
-      "name": "Iki",
-      "contellation": "Fenix"
+      "name": "Ikki",
+      "constellation": "Fenix"
     },
     {
       "name": "m",
@@ -34,16 +34,6 @@
       "name": "maxi",
       "constellation": "djjd",
       "id": 1622665362251
-    },
-    {
-      "name": "seya",
-      "constellation": "Pegaso",
-      "id": 1622666058497
-    },
-    {
-      "name": "seya",
-      "constellation": "Pegaso",
-      "id": 1622666146654
     }
   ]
 }

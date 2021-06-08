@@ -42,19 +42,19 @@ export const HelpHttp=()=>{
 
     //si en el get no tiene opciones que es lo mas logico le pasamos un obj vacio que se llenara
     //en customFetch con las propiedades que le pasamos por defecto
-    const get= async(url,options={})=> await customFetch(url,options)
+    const get= async(url,options={})=>  await customFetch(url,options)
    
     const post=async(url,options={})=>{
         options.method='POST'
+       return  await customFetch(url,options)
+    }
+    const put=async(url,options={})=>{
+        options.method='PUT'
        return await customFetch(url,options)
     }
-    const put=(url,options={})=>{
-        options.method='PUT'
-        customFetch(url,options)
-    }
-    const delet=(url,options={})=>{
+    const delet=async(url,options={})=>{
         options.method='DELETE'
-        customFetch(url,options)
+        return await customFetch(url,options)
     }
     
 

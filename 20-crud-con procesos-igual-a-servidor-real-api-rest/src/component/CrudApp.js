@@ -52,9 +52,26 @@ export const CrudApp=()=>{
    const UpdateData=(data)=>{
         // console.log(data.id)
         let rutUrl=`${url}/${data.id}`;
-        let newData=db.map((el)=>el.id===data.id ? data : el)
-        setdb(newData)
-        console.log(newData)
+        console.log(rutUrl)
+        let option={
+            body:data,
+            headers:{'content-type':'application/json'}
+        }
+        put(rutUrl,option).then(res=>{
+            // console.log(res);    
+            //si va todo bien es que ya modifico la bbdd solo queda traer esos datos de la bbdd
+            if(!res.err){
+                //traemos la nueva bbdd moodificada por el put
+                //cada vuelta de bucle si el id coincide me tres ese registro sino me trae la bbdd normal
+                //hasta encontrar esa coinidencia. pero de todas manera traera toda la bbdd
+                let newData=db.map((el)=>el.id===data.id ? data : el)
+                console.log(newData)
+                setdb(newData)
+                
+            }else{
+                setError(res)
+            }
+        })
    }
    const DeleteData=(id)=>{
         console.log(id)
@@ -63,9 +80,20 @@ export const CrudApp=()=>{
             if(!confirmDelete){
                 return
             }else{
-                let newDataDelete=db.filter(el=>el.id!==id)
-                setdb(newDataDelete)
-                console.log(newDataDelete)
+
+                let rutUrl=`${url}/${id}`;
+                let options={
+                    headers:{'content-type':'application/json'}
+                }
+                delet(rutUrl,options).then(res=>{
+                    if(!res.err){
+                        let newDataDelete=db.filter(el=>el.id!==id)
+                        setdb(newDataDelete)
+                        console.log(newDataDelete)
+                    }else{
+                        setError(res)
+                    }
+                })
             }   
    }
     return(
