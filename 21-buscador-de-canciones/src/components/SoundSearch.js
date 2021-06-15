@@ -34,10 +34,12 @@ export const SoundSearch=()=>{
             //y en all() va la peticion get que tenemos en helpper
             const [artistRes,songRes]= await Promise.all([get(artistUrl),get(songUrl)])
 
+            console.log(artistRes,songRes)
             setLoading(false)
+           
             setBiography(artistRes);
             setLyric(songRes);
-            // console.log(biography.artists[0].strLabel)
+           
         }
         fetchData();
     },[search])
@@ -50,7 +52,8 @@ export const SoundSearch=()=>{
             <main>
                 {loading && <Loader/>}
                 <SoundForm handlesearch={handlesearch} />
-                <SounDetail search={search} lyric={lyric} biography={biography}/>
+                {search && !loading && <SounDetail search={search} lyric={lyric} biography={biography}/>}
+                
             </main>
         </>
     )
