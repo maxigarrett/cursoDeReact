@@ -11,8 +11,8 @@ export const SounDetail=({search,lyric,biography})=>{
     }
     return(
         <article>
-            {lyric.lyrics?
-                <SoundLyric title={search.song} lyric={lyric.lyrics}/>
+            {lyric.mus?
+                <SoundLyric title={search.song} lyric={lyric.mus[0]}/>
                 :
                 <Message MesaggeError={`Error no existe la cancion ${search.song}`} BgColor='#dc3545'/>
             }
