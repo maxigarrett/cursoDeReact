@@ -1,8 +1,11 @@
 import React from 'react';
 
-export const SoundLyric=()=>{
+export const SoundLyric=({title,lyric})=>{
 
     return(
-        <h2>Lyric</h2>
+        <section>
+            <h2>{title}</h2>
+            <p>{lyric.lyrics}</p>
+        </section>
     )
 }
