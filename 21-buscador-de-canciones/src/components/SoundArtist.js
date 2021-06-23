@@ -19,6 +19,7 @@ export const SoundArtist=({artist})=>{
 				<p><b>Pais:  </b>{artist.strCountry}</p>
 				<p><b>Genero:  </b>{artist.strGenre}</p>
 				{artist.strWebsite && <a href={`http://${artist.strWebsite}`} target='_blank' rel='noreferrer'><b>{artist.strWebsite}</b></a>}
+				<br></br>
 				<a href={`http://${artist.strLastFMChart}`} target='_blank' rel='noreferrer'><b>{artist.strLastFMChart}</b></a>
 				<blockquote>
 					{artist.strBiographyES}
