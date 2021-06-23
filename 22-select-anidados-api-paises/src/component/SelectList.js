@@ -1,7 +1,6 @@
 import React from 'react';
 // import { FetchApi } from '../helper/FetchApi';
 
-
 export const SelectList=({title,url,handleChange})=>{
     // const {data,error,loading}= FetchApi(url);
 

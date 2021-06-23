@@ -15,6 +15,7 @@ export const SelectAnidados=()=>{
             {municipios && <SelectList title='colonias' url={``} handleChange={(e)=>setColonias(e.target.value)}/>}
 	        
             <p>{state,municipios,colonias}</p>
+            
         </>
     )
 }

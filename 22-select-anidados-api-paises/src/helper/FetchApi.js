@@ -14,6 +14,7 @@ export const FetchApi=(url)=>{
         const fetchData= async()=>{
             setLoading(true);
             try{
+                
                 const res=await fetch(url);
                 if(!res.ok){
                     let error=new  Error('error en la peticion fetch');
