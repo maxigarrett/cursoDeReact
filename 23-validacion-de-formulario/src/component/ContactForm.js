@@ -1,5 +1,7 @@
 import React from "react";
-import { useForm } from "../helper/useForm";
+import { useForm } from "../hooks/useForm";
+import { Loader } from './Loader';
+import { Message } from './Message';
 import './ContactForm.css'
 const initialForm={
     name:'',
@@ -28,8 +30,9 @@ const validateForm=(form)=>{
     if(!form.coment.trim()) errors.coment='introduzaca comentario';
     if(form.coment.trim() && !regexComments.test(form.coment)) errors.coment='maximo 255 caracteres'
     
-    
-    return errors//retorna el obj de error donde llenara la var de estado de error en useForm
+    //retorna el obj de error donde llenara la var de estado de error en useForm
+    //si no hay error y no entra alos if pues sera un objeto vacio y se podra enviar el formulario
+    return errors
 }
 export const ContactForm=()=>{
 
@@ -61,7 +64,7 @@ export const ContactForm=()=>{
                     name='email'
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder='ingrese su contraseña'
+                    placeholder='ingrese su Email'
                     value={form.email}
                 />
                 {error.email && <p>{error.email}</p>}
@@ -70,7 +73,7 @@ export const ContactForm=()=>{
                     name='subject'
                     onChange={handleChange}
                     onBlur={handleBlur}
-                    placeholder='ingrese su contraseña'
+                    placeholder='asunto a tratar'
                     value={form.subject}
                 />
                 
@@ -84,6 +87,12 @@ export const ContactForm=()=>{
                 />
                 {error.coment && <p>{error.coment}</p>}
                 <input type='submit' value='ENVIAR'/>
+                {loading && <Loader/>}
+                {response &&
+                 <Message 
+                    MesaggeError='formulario enviado exitosamente' 
+                    BgColor='green'
+                />}
             </form>
         </>
     )
