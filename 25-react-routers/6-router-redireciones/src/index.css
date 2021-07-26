@@ -1,0 +1,15 @@
+body {
+  margin: 0;
+  font-family: sans-serif;
+}
+a{
+  margin-left:2rem;
+  text-decoration: none;
+}
+li{
+  margin-top: 2rem;
+}
+.active{
+  font-weight: bold;
+  color: #61dafb;
+}
