@@ -4,7 +4,7 @@ import { CrudForm } from './CrudForm';
 import { CrudTable } from './CrudTable';
 import { Loader } from './Loader';
 import { Message } from './Message';
-// json-server --watch db.json
+// json-server --watch db.json para arrancar un servidor y se fije la bbdd que creamos llamada db.json
 export const CrudApp=()=>{
    const [db,setdb]= useState(null);
    const [dataToEdit,setdataToEdit]= useState(null);//para saber si necesitamos crear o actulizar datos
