@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
+import { HashRouter, NavLink, Route, Switch } from 'react-router-dom';
 import { HelpHttp } from '../helper/HelpHttp';
+import { Error404 } from '../pages/Error404';
 import { CrudForm } from './CrudForm';
 import { CrudTable } from './CrudTable';
 import { Loader } from './Loader';
@@ -59,11 +61,7 @@ export const CrudApp=()=>{
         }
         put(rutUrl,option).then(res=>{
             // console.log(res);    
-            //si va todo bien es que ya modifico la bbdd solo queda traer esos datos de la bbdd
             if(!res.err){
-                //traemos la nueva bbdd moodificada por el put
-                //cada vuelta de bucle si el id coincide me tres ese registro sino me trae la bbdd normal
-                //hasta encontrar esa coinidencia. pero de todas manera traera toda la bbdd
                 let newData=db.map((el)=>el.id===data.id ? data : el)
                 console.log(newData)
                 setdb(newData)
@@ -98,36 +96,50 @@ export const CrudApp=()=>{
    }
     return(
         <>
+        {/*basename sirve para indicar la ruta que van a compartir todas las rutas*/}
+        <HashRouter basename='santos'>
             <header> 
-                <h2>Crud App</h2> 
+                <h2>Crud App Con Rutas</h2> 
             </header>
-            <main>
-                {/*le pasamos la funcion como props la funcion seria la que esta dentro de llaves*/}
-                <CrudForm 
-                    createData={CreateData}
-                    updateData={UpdateData} 
-                    dataToEdit={dataToEdit}
-                    setDataToEdit={setdataToEdit}
-                />
-                {/*&& muestra lo que es false y como la varibale esta en false se queda ahi y no
-                hace nada cuando pase a true mostrara el loader ya que el && muestra lo contrario
-                de true y si loading es true mostrara lo contrario osea loader*/}
-                {loading && <Loader />}
-                {error && <Message MesaggeError={`Error ${error.status} ${error.statusText}`} BgColor='#dc3545'/>}
+            <nav>{/*tendria qu ir en un archivo aparte y llamarlo aca*/}
+                {/*al tener ese basename y poner to='/' en la url aparecera como to='/santos'*/}
+                <NavLink exact to='/' activeClassName='active'>Santos</NavLink>
+                <NavLink exact to='/agregar' activeClassName='active'>Agregar</NavLink>
+            </nav>
+            <Switch>
+                <Route exact path='/'>
+                    <main>
+                        {loading && <Loader />}
+                        {error && <Message MesaggeError={`Error ${error.status} ${error.statusText}`} BgColor='#dc3545'/>}
 
-                {/*como la db ya existe entonces no es null o false mostrara lo contrario osea
-                la crudtable*/}
-                {db &&                 
-                    <CrudTable 
-                        data={db} 
+                        {db &&                 
+                            <CrudTable 
+                                data={db} 
+                                setDataToEdit={setdataToEdit}
+                                deleteData={DeleteData}
+                            />
+                        }     
+                    </main>
+                </Route>
+                <Route exact path='/agregar'>
+                    <CrudForm 
+                        createData={CreateData}
+                        updateData={UpdateData} 
+                        dataToEdit={dataToEdit}
                         setDataToEdit={setdataToEdit}
-                        deleteData={DeleteData}
                     />
-                }
-
-                
-                
-            </main>
+                </Route>
+                <Route exact path='/editar/:id'>
+                    <CrudForm 
+                        createData={CreateData}
+                        updateData={UpdateData} 
+                        dataToEdit={dataToEdit}
+                        setDataToEdit={setdataToEdit}
+                    />
+                </Route>
+                <Route to='*' children={<Error404/>}></Route>
+            </Switch>
+        </HashRouter>
         </>
     )
 }

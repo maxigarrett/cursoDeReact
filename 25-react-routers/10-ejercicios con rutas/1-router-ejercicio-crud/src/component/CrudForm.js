@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import './CrudForm.css'
 
 const initialForm={
@@ -7,13 +8,11 @@ const initialForm={
     id:null,
 }
 export const CrudForm=({createData,updateData,dataToEdit,setDataToEdit})=>{
-    //en ves de que cargue un obj vacio le decimos que cargue el obj que creamos
     const [form,setForm]=useState(initialForm)
-
-    //se ejecutara caundo cambie el valor de la variable dataToEdit que se lo pasamos desde CrudTableRow.js
+    let history=useHistory();
     useEffect(()=>{
         if(dataToEdit!==null){
-            setForm(dataToEdit)//si trae del boton editar toda la info de un registro actualizamos la variable form
+            setForm(dataToEdit)
         }
         else{
             setForm(initialForm)
@@ -46,6 +45,7 @@ export const CrudForm=({createData,updateData,dataToEdit,setDataToEdit})=>{
     const handleReset=()=>{
         setForm(initialForm);
         setDataToEdit(null)
+        history.push('/')
     }
     return(
         <>
