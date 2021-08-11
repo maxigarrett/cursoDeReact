@@ -30,11 +30,6 @@ export const SoundSearch=()=>{
             // console.log(artistUrl,songUrl)
             setLoading(true);//aparece el loadin mientras espera la carga
 
-            //como son 2 peticioines usaremos promise.all() all recibe como argumento un arreglo con 
-            //todas las peticiones fetch que querramos hacer. artistRes,songRes destructuramos y le
-            //poenemos el nombre que queremos y donde se almacena la repuesta de la api.
-            //el orden de las peticiones se almacenan en orden tambien que ponemos las variables
-            //y en all() va la peticion get que tenemos en helpper
             const [artistRes,songRes]= await Promise.all([get(artistUrl),get(songUrl)])
 
             console.log(artistRes,songRes)

@@ -11,16 +11,16 @@ export const SounDetail=({search,lyric,biography})=>{
     }
     return(
         <article>
+            {/*BIOGRAFIA DEL ARTISTA*/}
+            {biography.artists?<SoundArtist artist={biography.artists[0]}/>:
+            <Message MesaggeError={`Error El artista '${search.artist}' no se encontro`} BgColor='#dc3545'/>
+            }    
             {lyric.mus?
                 <SoundLyric title={search.song} lyric={lyric.mus[0]}/>
                 :
                 <Message MesaggeError={`Error no existe la cancion ${search.song}`} BgColor='#dc3545'/>
             }
 
-            {/*BIOGRAFIA DEL ARTISTA*/}
-            {biography.artists?<SoundArtist artist={biography.artists[0]}/>:
-            <Message MesaggeError={`Error El artista '${search.artist}' no se encontro`} BgColor='#dc3545'/>
-            }    
         </article>
     )
 }

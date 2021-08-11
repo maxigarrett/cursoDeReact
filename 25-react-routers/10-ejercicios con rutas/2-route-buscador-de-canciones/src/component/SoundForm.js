@@ -4,19 +4,22 @@ const initialForm={
     artist:'',
     song:''
 }
-export const SoundForm=({handlesearch})=>{
+export const SoundForm=({handlesearch, handleSaveSongs})=>{
     
-    const [form,setForm]=useState(initialForm)
+    const [form,setForm]=useState(initialForm);
+    const [isDisable,setIsDisable]=useState(true);
     
     const handleSubmit=(e)=>{
         e.preventDefault()
         if(!form.artist || !form.song){
             alert('Formulario incompleto')
+            setIsDisable(true)//para mostrat el boton o no de favoritos
             return
         }
         else{
             handlesearch(form);
             setForm(initialForm);
+            setIsDisable(false)
         }
     }
     
@@ -43,6 +46,12 @@ export const SoundForm=({handlesearch})=>{
                 value={form.song}
             />
             <input type='submit' value='Buscar'/>
+            <input 
+                type='button' 
+                value='favoritos' 
+                onClick={handleSaveSongs}
+                disabled={isDisable && 'disable'}
+            />
         </form>
     )
 }
