@@ -1,0 +1,19 @@
+body {
+  margin: 0;
+}
+header{
+  display: flex;
+  flex-direction: column;
+}
+header select{
+  width: 20%;
+}
+.App{
+  background-color: rgb(150, 142, 142);
+  margin: 2rem auto;
+  width: 400px;
+}
+.dark{
+  background-color: #fff;
+  filter: invert(1);
+}
