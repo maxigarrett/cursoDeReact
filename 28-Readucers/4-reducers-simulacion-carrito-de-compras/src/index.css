@@ -1,0 +1,25 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1{
+  text-align: center;
+}
+.box{
+  text-align: center;
+  display: grid;
+  grid-template-columns: repeat(auto-fit,minmax(200px,1fr));
+  box-shadow: 4px 4px 16px #00000025 inset;
+  margin: 1rem;
+  padding: 1rem;
+}
+.articleCard{
+  border: 1px solid;
+  margin: 1rem;
+  padding: 1rem 0;
+  box-shadow: 4px 4px 4px #00000035;
+}
