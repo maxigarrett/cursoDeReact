@@ -14,7 +14,13 @@ export const ShoppingCar=()=>{
         dispach({type:TYPES.ADD_TO_CAR,payload:id})
     }
 
-    const deleteCar=()=>{}
+    const deleteCar=(id,value=false)=>{
+        if(value){
+            dispach({type:TYPES.REMOVE_ALL_FROM_CAR,payload:id})
+        }else{
+            dispach({type:TYPES.REMOVE_ONE_FROM_CAR,payload:id})
+        }
+    }
     const clearCar=()=>{}
     return (
         <>

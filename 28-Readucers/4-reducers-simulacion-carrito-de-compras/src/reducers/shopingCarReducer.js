@@ -55,7 +55,9 @@ export const shoppingCardreducer=(state,action)=>{
             
         }
         case TYPES.REMOVE_ONE_FROM_CAR:{}
-        case TYPES.REMOVE_ALL_FROM_CAR:{}
+        case TYPES.REMOVE_ALL_FROM_CAR:{
+            console.log(id)
+        }
         case TYPES.CLEAR_CAR:{}
         default: return state
     }
