@@ -1,14 +1,20 @@
-import {React, useState,useContext} from 'react';
+import {React, useState,useContext, useEffect} from 'react';
+import { useHistory, useParams } from 'react-router';
 import { TaskContext } from '../contexts/TaskContext';
 
-
 const initialForm={
+    id:'',
     title:'',
     description:''
 }
 export const TaskForm=()=>{
     const [form,setForm]=useState(initialForm)
-    const {addTask} =useContext(TaskContext)
+    const {addTask,tasks,updateTask} =useContext(TaskContext)
+    const location=useHistory();
+    const params=useParams();
+    // console.log(params.id)
+
+    //actualizamos la variable de estado form
     const handelChange=(e)=>{
         let {name,value}=e.target
         setForm({
@@ -17,10 +23,29 @@ export const TaskForm=()=>{
         }) 
     }
 
+    //enviamos el formlario
     const handelSubmit=(e)=>{
         e.preventDefault();
-        addTask(form)
+        //si trae un id el fomulario editamos sino creamos la tarea
+        if(form.id){
+            console.log('update')
+            updateTask(form)
+        }else{
+            console.log('creating')
+            addTask(form)
+        }
+        location.push('/')
     }
+
+    
+    useEffect(()=>{
+        if(!params.id) return null
+        const findTask=tasks.find(task=>task.id==params.id)
+ 
+        //si existe un id en el la url como parametro de la ruta
+        if(findTask)setForm(findTask)
+    
+    },[params.id,tasks])
     return(
         <div className='flex justify-center items-center h-3/4'>
             <form className='bg-gray-900 p-10' onSubmit={handelSubmit}>
@@ -32,6 +57,7 @@ export const TaskForm=()=>{
                         placeholder='titulo de la tarea'
                         className='py-3 px-4 focus:outline-none focus:text-gray-100 bg-gray-700 w-full'
                         onChange={handelChange}
+                        value={form.title}
                     />
                 </div>
                 <div className='mb-5'>
@@ -41,12 +67,13 @@ export const TaskForm=()=>{
                         rows='2'
                         className='py-3 px-4 focus:outline-none focus:text-gray-100 bg-gray-700 w-full'
                         onChange={handelChange}
+                        value={form.description}
                     />
                 </div>
                 <button 
                     type='submit'
                     className='bg-green-600 w-full hover:bg-green-500 py-2 px-4 mt-5'>
-                        Create Task
+                      {params.id?'Edit Task':' Create Task'} 
                 </button>
             </form>
         </div>

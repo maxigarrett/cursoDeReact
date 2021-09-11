@@ -14,6 +14,7 @@ function App() {
               <Switch>
                 <Route exact path='/' component={TaskList}/>
                 <Route exact path='/add' component={TaskForm}/>
+                <Route exact path='/edit/:id' component={TaskForm}/>
               </Switch>
             </TaskProvaider>
         </Router>
