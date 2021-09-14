@@ -8,8 +8,8 @@ export const ShoppingCarItem=({data,deleteCar})=>{
                 <h3>{name}</h3>
             </header>
             <span>${price}.00 cantidad {cuantity} = {result}</span>
-            <button onclick={()=>deleteCar(id)}>Eliminar uno</button>
-            <button onclick={()=>deleteCar(id,true)}>Eliminar todos</button>
+            <button onClick={()=>deleteCar(id)}>Eliminar uno</button>
+            <button onClick={()=>deleteCar(id,true)}>Eliminar todos</button>
         </>
     )
 }

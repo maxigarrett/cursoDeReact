@@ -15,13 +15,17 @@ export const ShoppingCar=()=>{
     }
 
     const deleteCar=(id,value=false)=>{
-        if(value){
-            dispach({type:TYPES.REMOVE_ALL_FROM_CAR,payload:id})
-        }else{
+        if(!value){
+            console.log(id,value,'uno')
             dispach({type:TYPES.REMOVE_ONE_FROM_CAR,payload:id})
+        }else{
+            console.log(id,value,'todo')
+            dispach({type:TYPES.REMOVE_ALL_FROM_CAR,payload:id})
         }
     }
-    const clearCar=()=>{}
+    const clearCar=()=>{
+        dispach({type:TYPES.CLEAR_CAR})
+    }
     return (
         <>
             <h1>Carrito De compras useReducer</h1>

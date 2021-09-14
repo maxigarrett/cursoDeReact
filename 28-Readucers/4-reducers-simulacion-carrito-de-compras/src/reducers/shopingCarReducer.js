@@ -32,17 +32,8 @@ export const shoppingCardreducer=(state,action)=>{
                 {...state,
                     //recorreremos el array de car
                     car:state.car.map(el=>
-                        //preguntamos si en ese erreglo car[] el id es igual al id del producto nuevo
-                        //que estamos agregando al carrito desde el newItem 
-                        el.id===itemInCarRepeat.id
-                        //si es igual es decir que es repetido entonces le agregamo la nueva propiedad
-                        //cauntity y le sumamos 1,antes de agregarle el cantity hacemos una copia del
-                        //elemento original llamado el y despues le sumamos ese cuantity sino se borrara
-                        //todo
-                        ?{...el,cuantity:el.cuantity +1}
-                        //sino lo deja como esta sin hacer nada
-                        :el
-                    )
+                        el.id===itemInCarRepeat.id ?{...el,cuantity:el.cuantity +1}:el
+                        )
                 }
                 :
                 //si no hace clic en dos veces el mismo producto pues la cantidad o quantity sera 1
@@ -54,11 +45,29 @@ export const shoppingCardreducer=(state,action)=>{
                 }
             
         }
-        case TYPES.REMOVE_ONE_FROM_CAR:{}
-        case TYPES.REMOVE_ALL_FROM_CAR:{
-            console.log(id)
+
+
+        case TYPES.REMOVE_ONE_FROM_CAR:{
+            let itemToDelete=state.car.find(item=>item.id==action.payload)
+            return itemToDelete.cuantity > 1?{
+                ...state,
+                car:state.car.map(item=>item.id==action.payload?{...item,cuantity:item.cuantity-1}:item)
+            }:{
+                //si llega a 1 producto y le damos a eliminar entonces eliminamos todo
+                ...state,
+                car:state.car.filter(item=>item.id!==action.payload)
+            }
+
         }
-        case TYPES.CLEAR_CAR:{}
+        case TYPES.REMOVE_ALL_FROM_CAR:{
+            return{
+                ...state,
+                car:state.car.filter(item=>item.id!==action.payload)
+            }
+        }
+        case TYPES.CLEAR_CAR:{
+            return intialShoppingCard
+        }
         default: return state
     }
 }
