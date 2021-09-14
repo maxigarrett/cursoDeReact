@@ -26,8 +26,8 @@ export const TaskForm=()=>{
     //enviamos el formlario
     const handelSubmit=(e)=>{
         e.preventDefault();
-        //si trae un id el fomulario editamos sino creamos la tarea
-        if(form.id){
+        //si trae un id la url editamos sino creamos la tarea
+        if(params.id){
             console.log('update')
             updateTask(form)
         }else{
@@ -42,7 +42,7 @@ export const TaskForm=()=>{
         if(!params.id) return null
         const findTask=tasks.find(task=>task.id==params.id)
  
-        //si existe un id en el la url como parametro de la ruta
+        //si existe un id en el la url como parametro de la ruta llenamos formulario
         if(findTask)setForm(findTask)
     
     },[params.id,tasks])
