@@ -2,7 +2,7 @@ import { BrowserRouter as Router,Switch ,Route,Link} from "react-router-dom";
 import { MovieList } from "./MovieList";
 import { useEffect, useState } from "react";
 import { get } from "../helper/helHttp";
-
+import styles from './MovieContainer.module.css';
 
 export const MovieContainer=()=>{
     const [movies,setMovies]=useState([]);
@@ -13,12 +13,12 @@ export const MovieContainer=()=>{
     return (
         <>
            <Router>
-                <header>
-                    <Link to='/'>Movies</Link>
+                <header className={styles.header}>
+                    <Link className={styles.movieList} to='/'>Movies</Link>
                 </header>
                 <Switch>
                     <Route exact path='/'>
-                        <ul>
+                        <ul className={styles.movieContainer}>
                             {/*componente li*/}
                             {movies.map(movie=><MovieList key={movie.id} movie={movie} id={movie.id}/>)}
                         
