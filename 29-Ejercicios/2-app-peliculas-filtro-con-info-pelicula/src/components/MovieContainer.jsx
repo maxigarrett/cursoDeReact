@@ -3,6 +3,7 @@ import { MovieList } from "./MovieList";
 import { useEffect, useState } from "react";
 import { get } from "../helper/helHttp";
 import styles from './MovieContainer.module.css';
+import { MovieDescription } from "../pages/MovieDescription";
 
 export const MovieContainer=()=>{
     const [movies,setMovies]=useState([]);
@@ -10,6 +11,7 @@ export const MovieContainer=()=>{
     useEffect(()=>{
         get(url).then(data=>setMovies(data.results))
     },[url])
+    if(!movies) return null
     return (
         <>
            <Router>
@@ -25,11 +27,10 @@ export const MovieContainer=()=>{
                         </ul>
                     </Route>
                     <Route exact path='/info/:idMovie'>
-                        <h3>Info de pelicula</h3>
+                        <MovieDescription/>
                     </Route>
                 </Switch>
            </Router>
-
         </>
     )
 }
