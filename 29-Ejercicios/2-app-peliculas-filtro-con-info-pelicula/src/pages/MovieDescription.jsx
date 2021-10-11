@@ -12,9 +12,7 @@ export const MovieDescription=()=>{
         get(url).then(data=>{
             console.log(data)
             setMovieDetail(data)
-
-        }
-            )
+        })
     },[url])
     if(!movieDetail) return null
     
