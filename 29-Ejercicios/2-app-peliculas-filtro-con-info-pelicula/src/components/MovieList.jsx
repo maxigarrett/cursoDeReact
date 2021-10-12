@@ -5,7 +5,6 @@ export const MovieList=({movie,id})=>{
     const img=`https://image.tmdb.org/t/p/w200/${movie.poster_path}`;
     // console.log(img)
     return (
-        <>
             <li className={styles.movieList}>
                 <Link to={`/info/${id}`} className={styles.movieList} >
                     <img className={styles.movieImg} src={img} alt='img'/>
@@ -14,6 +13,5 @@ export const MovieList=({movie,id})=>{
                     </div>
                 </Link>
             </li>
-        </>
     )
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import { useState } from 'react'
 import { useHistory } from "react-router-dom"
+import  style from './FormMovieSearch.module.css'
 const initialFormSearch={
     search:''
 }
@@ -21,8 +22,7 @@ export  const FormMovieSearch=()=> {
         history.push(`?search=${form.search}`)
     }
     return (
-        <>
-            <form onSubmit={handelSubmit}>
+            <form onSubmit={handelSubmit} className={style.form}>
                 <input 
                     type="text"
                     name='search'
@@ -31,6 +31,5 @@ export  const FormMovieSearch=()=> {
                 />
                 <button type="submit">buscar</button>
             </form>     
-        </>
     )
 }
