@@ -42,10 +42,10 @@ export const MovieContainer=()=>{
     
     if(!movies) return null
    
-   console.log(pageNumeration)
+//    console.log(pageNumeration)
     return (
         <>
-            <FormMovieSearch/>
+            <FormMovieSearch setMovies={setMovies} setPageNumeration={setPageNumeration} />
             { /*libreria de react para usar un scroll infinito por si vienen muchas paginas de peliculas */}
             <InfiniteScroll 
                 //le pasamos al infine scroo la cantidad actual de elementos del arreglo de peliculas
@@ -64,7 +64,7 @@ export const MovieContainer=()=>{
             >
                 <ul className={styles.movieContainer}>
                     {/*componente li*/}
-                    {movies.map(movie=><MovieList key={movie.id +1} movie={movie} id={movie.id}/>)}
+                    {movies.map(movie=><MovieList key={movie.id} movie={movie} id={movie.id}/>)}
                 </ul>
             </InfiniteScroll>
         </>

@@ -18,7 +18,7 @@ function App() {
         <Switch>
         {/*tira un warning que con este fragment se soluciona*/}
           <>
-            <main>
+            <main className={`${styles.main}`}>
               <Route exact path='/'>
                 <MovieContainer/>
               </Route>

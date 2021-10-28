@@ -7,7 +7,7 @@ const initialTask={
         {id:2,finished:false,title:'task 2',description:'description 2',}
     ]
 }
-export const TaskContext=createContext(initialTask)
+export const TaskContext=createContext()
 
 
 export const TaskProvaider=({children})=>{

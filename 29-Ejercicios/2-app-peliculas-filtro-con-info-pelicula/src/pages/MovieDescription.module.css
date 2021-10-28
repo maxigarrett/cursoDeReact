@@ -1,0 +1,31 @@
+.section{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.description{
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 50%;
+    letter-spacing: 2px;
+    line-height: 20px;
+}
+@media screen and (min-width:760px){
+    .section{
+        width: 70%;
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    .description{
+        width: 60%;
+        text-align: left;
+        padding-left: 2em;
+    }
+}
