@@ -20,18 +20,19 @@ export const MovieContainer=()=>{
     const movieSearchParams =query.get('search');
     // console.log(movieSearchParams)
 
-    
     useEffect(()=>{
-                                    // MUY INPORTANTE
+        
+                                                    // MUY INPORTANTE
         // VERIFICAR SI ESTO SOLUCIONA EL PROBLEDE DE VUANDO VOLVEMOS AL INICION DE LA PELICULA SE 
         // RESETEA TODO Y QUEDA CON LAS PELICULAS CUANDO SE CARGA POR PRIMERA VES LA APP
-        setMovies([]); 
-        setPageNumeration(1)
+        // setMovies([]); 
+        // setPageNumeration(1)
         let movieSearch=movieSearchParams
             ?
                 `https://api.themoviedb.org/3/search/movie?query=${movieSearchParams}&page=${pageNumeration}`
             :
                 `https://api.themoviedb.org/3/discover/movie?page=${pageNumeration}`
+
 
             // hacemos lo mismo dentrode setMovie hacemos una funcion para rescatar el valor anterior 
             //y lo concatenamos el siguiente para que muerte las peliculas cuando se cargue la pag y
@@ -42,9 +43,11 @@ export const MovieContainer=()=>{
             //el hashmore esta en false
             setHashMore(data.page < data.total_pages)
         })
+
+
     },[movieSearchParams,pageNumeration])
     
-    
+  
     if(!movies) return null
    
 //    console.log(pageNumeration)
@@ -69,7 +72,7 @@ export const MovieContainer=()=>{
             >
                 <ul className={styles.movieContainer}>
                     {/*componente li*/}
-                    {movies.map(movie=><MovieList key={movie.id} movie={movie} id={movie.id}/>)}
+                    {movies.map(movie=><MovieList  movie={movie} id={movie.id}/>)}
                 </ul>
             </InfiniteScroll>
         </>

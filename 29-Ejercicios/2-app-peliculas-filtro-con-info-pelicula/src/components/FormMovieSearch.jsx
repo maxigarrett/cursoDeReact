@@ -9,6 +9,7 @@ export  const FormMovieSearch=({setMovies,setPageNumeration})=> {
     const [form, setForm] = useState(initialFormSearch)
     const history = useHistory();
 
+
     const handelChange=(e)=>{
         const {name,value}=e.target
         setMovies([])
@@ -18,8 +19,9 @@ export  const FormMovieSearch=({setMovies,setPageNumeration})=> {
             [name]:value
         })
         history.push(`?search=${value}`)
+        
     }
-
+ 
     const handelSubmit=(e)=>{
         e.preventDefault()
         if(!form.search || form.search==='') return alert('ingrese algun dato a buscar');
@@ -36,7 +38,7 @@ export  const FormMovieSearch=({setMovies,setPageNumeration})=> {
                 <input 
                     type="text"
                     name='search'
-                    onChange={handelChange}
+                    onChange={ handelChange}
                     value={form.search} 
                 />
                 <button type="submit">buscar</button>
