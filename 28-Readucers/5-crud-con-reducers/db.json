@@ -3,7 +3,7 @@
     {
       "id": 1,
       "name": "Seianin",
-      "constellation": "Pegasos"
+      "constellation": "Pegasini"
     },
     {
       "id": 2,
@@ -29,6 +29,11 @@
       "name": "m",
       "constellation": "Pegaso",
       "id": 1622665148402
+    },
+    {
+      "name": "seya",
+      "constellation": "ss",
+      "id": 1641266169626
     }
   ]
 }

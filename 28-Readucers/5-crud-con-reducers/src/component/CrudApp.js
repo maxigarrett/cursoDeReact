@@ -1,12 +1,21 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useReducer, useState } from 'react';
 import { HelpHttp } from '../helper/HelpHttp';
 import { CrudForm } from './CrudForm';
 import { CrudTable } from './CrudTable';
 import { Loader } from './Loader';
 import { Message } from './Message';
+
+import {TYPES} from '../action/crudAction';
+import { crudAPIReducer, CrudInitialDb } from '../reducers/crudAPIReducer';
+
+
+
 // json-server --watch db.json para arrancar un servidor y se fije la bbdd que creamos llamada db.json
 export const CrudApp=()=>{
-   const [db,setdb]= useState(null);
+//    const [db,setdb]= useState(null);
+const[state,dispach]=useReducer(crudAPIReducer,CrudInitialDb)
+const{db}=state
+
    const [dataToEdit,setdataToEdit]= useState(null);//para saber si necesitamos crear o actulizar datos
    const [error,setError]= useState(null);
    const [loading,setLoading]= useState(false);
@@ -19,11 +28,12 @@ export const CrudApp=()=>{
     get(url).then(data=>{
         console.log(data);
         if(!data.err){
-            setdb(data)
+            // setdb(data)
+            dispach({type:TYPES.READ_ALL_DATA,payload:data})
             setError(null)
         }else{
             // console.log(data);
-            setdb(null)
+            // setdb(null)
             setError(data)
         }
         setLoading(false)
@@ -38,9 +48,11 @@ export const CrudApp=()=>{
             headers:{'content-type':'application/json'}
         }
         await post(url,options).then((res)=>{
-           console.log(res)
+            // console.log('creando')
+           console.log(data)
            if(!res.err){//si no hay una propiedad err que creamos en el helper pues todo va bien
-            setdb([...db,res])
+            dispach({type:TYPES.CREATE_DATA,payload:res})
+            // setdb([...db,res])
            }
            else{
                setError(res)
@@ -61,12 +73,10 @@ export const CrudApp=()=>{
             // console.log(res);    
             //si va todo bien es que ya modifico la bbdd solo queda traer esos datos de la bbdd
             if(!res.err){
-                //traemos la nueva bbdd moodificada por el put
-                //cada vuelta de bucle si el id coincide me tres ese registro sino me trae la bbdd normal
-                //hasta encontrar esa coinidencia. pero de todas manera traera toda la bbdd
-                let newData=db.map((el)=>el.id===data.id ? data : el)
-                console.log(newData)
-                setdb(newData)
+               
+                // let newData=db.map((el)=>el.id===data.id ? data : el)
+                dispach({type:TYPES.UPDATE_DATA,payload:data})
+                // setdb(newData)
                 
             }else{
                 setError(res)
@@ -87,9 +97,8 @@ export const CrudApp=()=>{
                 }
                 delet(rutUrl,options).then(res=>{
                     if(!res.err){
-                        let newDataDelete=db.filter(el=>el.id!==id)
-                        setdb(newDataDelete)
-                        console.log(newDataDelete)
+                        dispach({type:TYPES.DELETE_DATA,payload:id})
+                        // setdb(newDataDelete)
                     }else{
                         setError(res)
                     }
