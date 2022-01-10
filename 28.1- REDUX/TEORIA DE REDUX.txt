@@ -1,0 +1,26 @@
+			PAGINA
+redux.js.org
+
+
+			introduccion
+redux lo utilisaremos cuando nuestra APP se vuelve de medianamente compleja en adelante ya que
+tener una estructura ordenada en varios archivos.
+REDUX nos propone tener un solo origen de la verdad, es decir, independientemente de que tengamos
+varios tipos de datos como una logica de negocios 
+
+			IMPORTANTE
+Store:contiene el state, uno por aplicacion maneja o puede tener varios estados. 
+Dispatch:ejecuta una accion que actualizara el state.
+Suscribe: es un manejador de eventos para el state.
+Reducer: son funciones que gestionan los actions 
+
+
+			INSTALACION
+una ves creamos la app de react para trabajar con REDUX necesitamos tres dependencias:
+npm i redux react-redux react-devtools 
+
+
+para trabajar con el estado en el navegador la
+que ofrece chrome da error si se configura mal, por eso react trae internamente para 
+instalar react-devtools como dependecia para poder utilizarla 
+
