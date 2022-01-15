@@ -1,6 +1,7 @@
 //CENTRALIZARA TODOS LOS REDUCERS
 import { combineReducers } from "redux";
 import { contadorReducers } from "./contadorReducers";
+import { crudReducer } from "./crudReducers";
 import { shopingCarReducer } from "./shopingCarReducer";
 
 
@@ -9,5 +10,6 @@ import { shopingCarReducer } from "./shopingCarReducer";
 //asi combinaremos todo en una sola variabele
  export const reducers= combineReducers({
      contador:contadorReducers,
-     shoping:shopingCarReducer
+     shoping:shopingCarReducer,
+     crud:crudReducer
 })
