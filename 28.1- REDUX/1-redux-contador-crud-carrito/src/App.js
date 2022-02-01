@@ -1,5 +1,6 @@
 import { Provider } from "react-redux";
 import { Contador } from "./components/Contador";
+import { CrudApp } from "./components/CrudApp";
 import { ShoppingCar } from "./components/ShoppingCar";
 import { store } from "./store";
 
@@ -10,10 +11,11 @@ function App() {
     <Provider store={store}>
       <>
         <h1>Redux</h1>
+        <CrudApp/>
+        <br/>
         <Contador/>
         <br/>
         <ShoppingCar/>
-
       </>
     </Provider>
   );

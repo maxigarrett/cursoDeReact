@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { noData, redAllData } from '../actions/crudActions';
+import { createData, deleteData, noData, redAllData, updateData } from '../actions/crudActions';
 import { HelpHttp } from '../helper/HelpHttp';
 import { CrudForm } from './CrudForm';
 import { CrudTable } from './CrudTable';
@@ -32,11 +32,11 @@ const dispatch = useDispatch();
         console.log(data);
         if(!data.err){
            
-            useDispatch(()=>redAllData(data));
+            dispatch(redAllData(data));
             setError(null)
         }else{
             // console.log(data);
-            useDispatch(()=>noData());
+            dispatch(noData());
             setError(data)
         }
         setLoading(false)
@@ -53,7 +53,7 @@ const dispatch = useDispatch();
             // console.log('creando')
            console.log(data)
            if(!res.err){
-            dispach({type:TYPES.CREATE_DATA,payload:res})
+            dispatch(createData(res))
             // setdb([...db,res])
            }
            else{
@@ -77,7 +77,7 @@ const dispatch = useDispatch();
             if(!res.err){
                
                 // let newData=db.map((el)=>el.id===data.id ? data : el)
-                dispach({type:TYPES.UPDATE_DATA,payload:data})
+                dispatch(updateData(res))
                 // setdb(newData)
                 
             }else{
@@ -99,7 +99,7 @@ const dispatch = useDispatch();
                 }
                 delet(rutUrl,options).then(res=>{
                     if(!res.err){
-                        dispach({type:TYPES.DELETE_DATA,payload:id})
+                        dispatch(deleteData(id))
                         // setdb(newDataDelete)
                     }else{
                         setError(res)

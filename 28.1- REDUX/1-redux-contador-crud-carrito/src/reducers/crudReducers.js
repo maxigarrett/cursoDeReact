@@ -1,4 +1,4 @@
-import { CREATE_DATA, NO_DATA, READ_ALL_DATA, UPDATE_DATA } from "../types"
+import { CREATE_DATA, DELETE_DATA, NO_DATA, READ_ALL_DATA, UPDATE_DATA } from "../types"
 
 const  CrudInitialDb={
     db:[]
@@ -30,7 +30,7 @@ export const crudReducer = (state=CrudInitialDb,action) => {
             }
         }
             
-        case TYPES.DELETE_DATA:{
+        case DELETE_DATA:{
             let newDataDelete=state.db.filter(el=>el.id!==action.payload)
             return{
                 ...state,

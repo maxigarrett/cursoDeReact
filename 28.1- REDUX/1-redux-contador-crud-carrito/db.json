@@ -1,11 +1,6 @@
 {
   "santos": [
     {
-      "id": 1,
-      "name": "Seia",
-      "constellation": "Pegasos"
-    },
-    {
       "id": 2,
       "name": "Shyru",
       "constellation": "Dragon"
@@ -34,6 +29,11 @@
       "name": "maxi",
       "constellation": "djjd",
       "id": 1622665362251
+    },
+    {
+      "name": "seya",
+      "constellation": "Pegaso",
+      "id": 1643737434487
     }
   ]
 }
