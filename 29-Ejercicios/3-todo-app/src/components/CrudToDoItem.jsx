@@ -15,7 +15,7 @@ export const CrudToDoItem = ({data,deleteData,handelChecked}) => {
   return (
       <div style={getStyles()}>
         <input type="checkbox" onChange={(id)=>handelChecked(data.id)}  checked={data.completed}/>
-        {data.task}
+        <p>{data.task}</p> 
         <button className='add-btn' onClick={(id)=>deleteData(data.id)}>X</button>
       </div>
   )
