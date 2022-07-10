@@ -21,11 +21,6 @@ export const MovieContainer = () => {
   // console.log(movieSearchParams)
 
   useEffect(() => {
-    // MUY INPORTANTE
-    // VERIFICAR SI ESTO SOLUCIONA EL PROBLEDE DE VUANDO VOLVEMOS AL INICION DE LA PELICULA SE
-    // RESETEA TODO Y QUEDA CON LAS PELICULAS CUANDO SE CARGA POR PRIMERA VES LA APP
-    // setMovies([]);
-    // setPageNumeration(1)
     let movieSearch = movieSearchParams
       ? `https://api.themoviedb.org/3/search/movie?query=${movieSearchParams}&page=${pageNumeration}`
       : `https://api.themoviedb.org/3/discover/movie?page=${pageNumeration}`;
