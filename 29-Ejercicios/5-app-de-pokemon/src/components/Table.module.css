@@ -1,0 +1,94 @@
+.table {
+  table-layout: fixed;
+  width: 100%;
+  min-height: 600px;
+  border-collapse: collapse;
+  border: 3px solid purple;
+  font-family: "Courier New", Courier, monospace;
+}
+img {
+  width: 100px;
+  height: 100px;
+}
+thead th:nth-child(1) {
+  width: 10%;
+}
+
+thead th:nth-child(2) {
+  width: 10%;
+}
+
+thead th:nth-child(3) {
+  width: 15%;
+}
+
+th,
+td {
+  padding: 10px;
+}
+
+th {
+  letter-spacing: 2px;
+}
+
+td {
+  letter-spacing: 1px;
+}
+
+tbody td {
+  text-align: center;
+}
+
+thead,
+tfoot {
+  color: white;
+  text-shadow: 1px 1px 1px black;
+}
+
+thead th {
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.5)
+  );
+  border: 3px solid purple;
+}
+
+tbody tr:nth-child(odd) {
+  background-color: #ff33cc;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #e495e4;
+}
+.buttonTable {
+  border: none;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.1),
+    rgba(0, 0, 0, 0.5)
+  );
+  padding: 10px;
+  width: 80px;
+  text-align: center;
+}
+.buttonContainer {
+  display: flex;
+  width: 370px;
+  justify-content: center;
+}
+@media screen and (min-width: 700px) {
+  .buttonContainer {
+    width: 700px;
+  }
+}
+@media screen and (min-width: 1000px) {
+  .buttonContainer {
+    width: 1000px;
+  }
+}
+@media screen and (min-width: 1440px) {
+  .buttonContainer {
+    width: 1440px;
+  }
+}
