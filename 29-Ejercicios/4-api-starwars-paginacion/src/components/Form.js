@@ -7,7 +7,12 @@ export const Form = ({ searchPeople }) => {
   const [form, setForm] = useState(initialForm);
 
   const handleChange = (e) => {
-    if (form.search === "") setForm(initialForm);
+    if (form.search === "") {
+      setForm(initialForm);
+    }
+    if (form.search !== "") {
+      searchPeople(form.search);
+    }
     setForm({
       ...form,
       [e.target.name]: e.target.value,
@@ -20,7 +25,7 @@ export const Form = ({ searchPeople }) => {
     else searchPeople(form.search);
   };
   return (
-    <div>
+    <div className="form-container">
       <form onSubmit={handleSubmit}>
         <input
           type="text"

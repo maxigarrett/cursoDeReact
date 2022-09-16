@@ -33,3 +33,15 @@ export const getSerchPeople = async (text) => {
     console.log(err);
   }
 };
+
+export const getImgCharacter = async (id) => {
+  try {
+    const response = await fetch(
+      `https://akabab.github.io/starwars-api/api/id/${id}.json`
+    );
+    const data = await response.json();
+    return data;
+  } catch (err) {
+    console.log(err);
+  }
+};

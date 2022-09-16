@@ -1,6 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { getCharacter, getPeople, getSerchPeople } from "./api/people";
+import {
+  getCharacter,
+  getImgCharacter,
+  getPeople,
+  getSerchPeople,
+} from "./api/people";
 import { Form } from "./components/Form";
+import "./App.css";
 
 function App() {
   const [people, setPeople] = useState([]);
@@ -10,10 +16,16 @@ function App() {
 
   const [pagination, setPagination] = useState(1);
 
+  //obtenemos id para cosultar api y obtener la imagen
+  const [idImg, setIdimg] = useState(1);
+  //guardamos la imagen
+  const [imgCharacter, setimgCharacter] = useState("");
+
   const [errorState, setErrorState] = useState({ hasError: true });
 
   const handelError = () => setErrorState({ hasError: false });
 
+  //llamamos
   useEffect(() => {
     getPeople(pagination)
       .then((data) => {
@@ -29,16 +41,32 @@ function App() {
       .catch((err) => console.log(err));
   }, [currentCharacter]);
 
+  //OBTENER IMG POR ID y la pasamos a el end point
+  useEffect(() => {
+    getImgCharacter(idImg)
+      .then((data) => setimgCharacter(data.image))
+      .catch((err) => console.log(err));
+  }, [idImg]);
+
+  // obtenemos el id de la ruta url
   const showDetails = (character) => {
     // console.log(character.url.split("/").slice(-2)[0]);
     const id = Number(character.url.split("/").slice(-2)[0]);
     setCurrentCharacter(id);
+    setIdimg(id);
     // console.log(showPeople);
   };
 
   //funcion buscador de personaje
   const searchPeople = (form) => {
+    if (form.length - 1 === 0) {
+      getPeople(pagination).then((data) => {
+        // console.log(data.results);
+        setPeople(data);
+      });
+    }
     setFormSearchPeople(form);
+
     getSerchPeople(formSearchPeople).then((data) => {
       // console.log(data);
       setPeople(data);
@@ -47,9 +75,9 @@ function App() {
 
   //funcion para hacer el paginado de la App
   const handelNexAndPrevius = (nextAndPrv) => {
-    console.log(pagination);
-    if (pagination + nextAndPrv > 9) return;
-    if (pagination + nextAndPrv < 1) return;
+    // console.log(pagination);
+    if (!people.previus && pagination + nextAndPrv <= 0) return;
+    if (!people.previus && pagination + nextAndPrv >= 9) return;
 
     setPagination(pagination + nextAndPrv);
   };
@@ -60,7 +88,7 @@ function App() {
 
       <ul className="list">
         {people.results &&
-          people.results.map((character) => (
+          people?.results?.map((character) => (
             <li
               style={{ cursor: "pointer" }}
               className="list__details"
@@ -77,6 +105,9 @@ function App() {
           <aside>
             <h2>{showPeople.name}</h2>
             <ul className="list">
+              <li className="list__item">
+                <img width={"80px"} src={`${imgCharacter}`} />
+              </li>
               <li className="list__item">masa: {showPeople.mass}</li>
               <li className="list__item">altura: {showPeople.height}</li>
               <li className="list__item">
@@ -87,9 +118,9 @@ function App() {
         )}
       </div>
 
-      <div>
-        <button onClick={() => handelNexAndPrevius(+1)}>next</button>
+      <div className="button-container">
         <button onClick={() => handelNexAndPrevius(-1)}>prev</button>
+        <button onClick={() => handelNexAndPrevius(+1)}>next</button>
       </div>
     </section>
   );
